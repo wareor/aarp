@@ -1,0 +1,78 @@
+openapi: 3.0.3
+info:
+  title: Swagger Petstore - OpenAPI 3.0
+  description: Contracts of API
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: http://localhost:52287/api
+paths:
+  /auth:
+    post:
+      summary: Sign up and create an account
+      description: POST with all fields required to Sign Up an user account to manage a Residential private
+      responses:
+        '200':
+          description: Account created successfully
+        '400':
+          description: Invalid data
+        '405':
+          description: Validation exception
+        '500':
+          description: Internal error, contact support on http://support.aarp.com
+components:
+  schemas:
+    Signup:
+      required:
+        - Names
+        - FirstLasName
+        - SecondLastName
+        - Email
+        - PhoneNumber
+        - Address
+        - PrivateResidentialName
+        - PrivateResidentialAddress
+      type: object
+      properties:
+        Names:
+          type: string
+          example: Jesús Alberto
+        FirstLastName:
+          type: string
+          example: Echevarría
+        SecondLastName:
+          type: string
+          example: Firman
+        Email:
+          type: string
+          example: echevarria.jesus.a@gmail.com
+        PhoneNumber:
+          type: string
+          example: 6643021548
+        Address:
+          type: string
+          example: Otay R. Tamayo 225 - A
+        PrivateResidentialAddress:
+          type: string
+          example: Otay R. Tamayo 225
+        PrivateResidentialName:
+          type: string
+          example: Departamentos café con rejas blancas :D
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string

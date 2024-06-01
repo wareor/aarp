@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\AARP_BE.props" />
+</Project>

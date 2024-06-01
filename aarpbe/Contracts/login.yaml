@@ -1,0 +1,71 @@
+openapi: 3.0.3
+info:
+  title: Swagger Petstore - OpenAPI 3.0
+  description: Contracts of API
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: http://localhost:52287/api
+paths:
+  /user:
+    get:
+      summary: Get 1 user
+      description: get 1 user
+      operationId: get 1 user
+      responses:
+        '200':
+          description: Successful operation
+          content:
+           application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid Credentials
+        '404':
+          description: Pet not found
+        '405':
+          description: Validation exception
+        '500':
+          description: Internal error, contact support on http://support.aarp.com
+components:
+  schemas:
+    User:
+      required:
+        - Email
+        - Password
+        - MobilePhone
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 3
+        Name:
+          type: string
+          example: 224-A
+        Email:
+          type: string
+          example: melo.camarillo.carlos@gmail.com
+        MobilePhone:
+          type: integer
+          example: 6643507465
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
